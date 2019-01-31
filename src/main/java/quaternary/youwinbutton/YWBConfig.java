@@ -48,9 +48,9 @@ public class YWBConfig {
 	}
 	
 	private static void readConfig() {
-		MIDDLE = getBlock(config, "middleBlock", "general", Blocks.BEACON, "The block in the center of the multiblock");
-		EDGE = getBlock(config, "edgeBlock", "general", Blocks.DIAMOND_BLOCK, "The block on the edge of the multiblock");
-		RADIUS = config.getInt("radius", "general", 4, 0, 127, "How many layers of the edge block you need for the multiblock. 0 will ignore it, so all you need is a button on the middle block");
+		MIDDLE = getBlock(config, "middleBlock", "general", Blocks.BEACON, "The block in the center of the multiblock!!!!!!!!!!!!!!!!!!!!!!!");
+		EDGE = getBlock(config, "edgeBlock", "general", Blocks.DIAMOND_BLOCK, "The block on the edge of the multiblock!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		RADIUS = config.getInt("radius", "general", 4, 0, 127, "How many layers of the edge block you need for the multiblock!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 0 will ignore it, so all you need is a button on the middle block!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		
 		PRIZE_ADVANCEMENT = config.getBoolean("advancements", "prizes", true, "Winning Minecraft gets you every advancement!!!!!!!!!!!!!!!!!!!");
 		PRIZE_CHAT = config.getBoolean("chat", "prizes", true, "Everyone will know in chat that you won!!!!!!!!!!");
@@ -64,8 +64,8 @@ public class YWBConfig {
 		PRIZE_SOUND = config.getBoolean("sound", "prizes", true, "Everyones ears will die on the server when you win!!!!!!!!!!!!");
 		PRIZE_TITLE = config.getBoolean("title", "prizes", true, "Everyone will know who won Minecraft on their screen!!!!!!!!!!!!");
 		
-		THE_ITEM_U_WIN = getItem(config, "itemYouWin", "prizes.settings", Items.DIAMOND, "The item you win for the 'item' prize");
-		GAME_NAME = config.getString("gameName", "prizes.settings", "Minecraft", "The name of the game. Used in a few prizes, like the title and chat prizes");
+		THE_ITEM_U_WIN = getItem(config, "itemYouWin", "prizes.settings", Items.DIAMOND, "The item you win for the 'item' prize!!!!!!!!!!!!!!!!!");
+		GAME_NAME = config.getString("gameName", "prizes.settings", "Minecraft", "The name of the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Used in a few prizes, like the title and chat prizes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		
 		if(config.hasChanged()) config.save();
 	}
