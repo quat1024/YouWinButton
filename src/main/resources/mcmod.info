@@ -1,0 +1,16 @@
+[
+{
+  "modid": "youwinbutton",
+  "name": "You Win Button",
+  "description": "Button that makes you say win",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["quaternary", "Vazkii"],
+  "credits": "Draconic evolution is balanced because it takes effort",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
