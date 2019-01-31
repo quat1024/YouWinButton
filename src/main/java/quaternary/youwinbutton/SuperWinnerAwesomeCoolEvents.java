@@ -2,7 +2,6 @@ package quaternary.youwinbutton;
 
 import net.minecraft.block.BlockButton;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -18,7 +17,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.GameType;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -26,7 +24,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.util.Locale;
 
@@ -97,11 +94,11 @@ public class SuperWinnerAwesomeCoolEvents {
 				}
 			}
 			
-			if(YWBConfig.PRIZE_DIAMONDS) {
+			if(YWBConfig.PRIZE_ITEM) {
 				for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
 					ItemStack stack = player.inventory.getStackInSlot(i);
 					if(stack.isEmpty()) {
-						player.inventory.setInventorySlotContents(i, new ItemStack(Items.DIAMOND, 64));
+						player.inventory.setInventorySlotContents(i, new ItemStack(YWBConfig.THE_ITEM_U_WIN, YWBConfig.THE_ITEM_U_WIN.getItemStackLimit()));
 					}
 				}
 				player.inventory.markDirty();

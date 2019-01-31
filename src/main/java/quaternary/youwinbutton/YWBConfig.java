@@ -2,6 +2,8 @@ package quaternary.youwinbutton;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -20,9 +22,11 @@ public class YWBConfig {
 	
 	public static String GAME_NAME;
 	
+	public static Item THE_ITEM_U_WIN;
+	
 	public static boolean PRIZE_CREATIVE;
 	public static boolean PRIZE_POTION;
-	public static boolean PRIZE_DIAMONDS;
+	public static boolean PRIZE_ITEM;
 	public static boolean PRIZE_ADVANCEMENT;
 	public static boolean PRIZE_SOUND;
 	public static boolean PRIZE_TITLE;
@@ -48,19 +52,20 @@ public class YWBConfig {
 		EDGE = getBlock(config, "edgeBlock", "general", Blocks.DIAMOND_BLOCK, "The block on the edge of the multiblock");
 		RADIUS = config.getInt("radius", "general", 4, 0, 127, "How many layers of the edge block you need for the multiblock. 0 will ignore it, so all you need is a button on the middle block");
 		
-		GAME_NAME = config.getString("gameName", "general", "Minecraft", "The name of the game. Used in a few prizes, like the title and chat prizes");
-		
 		PRIZE_ADVANCEMENT = config.getBoolean("advancements", "prizes", true, "Winning Minecraft gets you every advancement!!!!!!!!!!!!!!!!!!!");
 		PRIZE_CHAT = config.getBoolean("chat", "prizes", true, "Everyone will know in chat that you won!!!!!!!!!!");
 		PRIZE_CREATIVE = config.getBoolean("creative", "prizes", true, "You will win the BEST BalanCED OP EXPERIENCE!!!! it's balanced because the multiblock is really big and expensive!!!");
-		PRIZE_DIAMONDS = config.getBoolean("diamonds", "prizes", true, "You will win an ass load of diamonds!!!!!!!!!!!!!!!!!!!!!");
 		PRIZE_ENTITY = config.getBoolean("entity", "prizes", true, "You will win every entity in the world in Minecraft!!!!!!!!!!!!!!!!!!!!!!!!!");
 		PRIZE_FIREWORKS = config.getBoolean("fireworks", "prizes", true, "You will win lots of FIRE WORKS!!!!!!!!!!!!!!!!!!!!!!! (uses code I took from EnderCore)");
+		PRIZE_ITEM = config.getBoolean("item", "prizes", true, "You will win a lot of item!!!!!!!!!!");
 		PRIZE_OP = config.getBoolean("op", "prizes", true, "You will win OP on the server!!!!!!!!!!!!!!!!!!!!!!");
 		PRIZE_POTION = config.getBoolean("potion", "prizes", true, "You will win every potion!!!!!!!!!!!!!!!!");
 		PRIZE_SLIME = config.getBoolean("slime", "prizes", true, "You will win lots of slimes!!!!!!!!!!!!!!!!!");
 		PRIZE_SOUND = config.getBoolean("sound", "prizes", true, "Everyones ears will die on the server when you win!!!!!!!!!!!!");
 		PRIZE_TITLE = config.getBoolean("title", "prizes", true, "Everyone will know who won Minecraft on their screen!!!!!!!!!!!!");
+		
+		THE_ITEM_U_WIN = getItem(config, "itemYouWin", "prizes.settings", Items.DIAMOND, "The item you win for the 'item' prize");
+		GAME_NAME = config.getString("gameName", "prizes.settings", "Minecraft", "The name of the game. Used in a few prizes, like the title and chat prizes");
 		
 		if(config.hasChanged()) config.save();
 	}
@@ -73,6 +78,18 @@ public class YWBConfig {
 			return ForgeRegistries.BLOCKS.getValue(res);
 		} else {
 			YouWinButton.LOGGER.error("[config] Can't find any block of name '{}' for config option '{{}'", res.toString(), name);
+			return def;
+		}
+	}
+	
+	private static Item getItem(Configuration config, String name, String category, Item def, String comment) {
+		String blockName = config.getString(name, category, def.getRegistryName().toString(), comment);
+		ResourceLocation res = new ResourceLocation(blockName);
+		
+		if(ForgeRegistries.ITEMS.containsKey(res)) {
+			return ForgeRegistries.ITEMS.getValue(res);
+		} else {
+			YouWinButton.LOGGER.error("[config] Can't find any item of name '{}' for config option '{{}'", res.toString(), name);
 			return def;
 		}
 	}
